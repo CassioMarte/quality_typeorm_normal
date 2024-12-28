@@ -3,6 +3,7 @@ import express from "express";
 import { AppDataSource } from "./database/datasource";
 import cors from 'cors'
 import dotenv from 'dotenv'
+import { userRoutes } from "./routes/User.routes";
 
 
 AppDataSource.initialize().then(() => {
@@ -12,6 +13,8 @@ AppDataSource.initialize().then(() => {
   app.use(express.json())
   app.use(cors())
   dotenv.config()
+
+  app.use('/users',userRoutes)
 
 
   app.listen(process.env.PORT || 3000, () => {

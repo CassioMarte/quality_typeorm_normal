@@ -3,7 +3,7 @@ import { Users } from "../models/User.entities";
 import { UserRepository } from "../Repositories/User.Repository";
 
 export class UserService {
-  async createUserService(data: IcreateUserTypes): Promise<Users> {
+  createUserService = async(data: IcreateUserTypes): Promise<Users> =>{
     try {
       const userRepository = new UserRepository();
 
@@ -20,7 +20,7 @@ export class UserService {
     }
   }
 
-  async showUsers():Promise<Users[] | []>{
+  showUsers = async():Promise<Users[] | []> =>{
     try {
       const userRepository = new UserRepository()
 
