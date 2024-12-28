@@ -3,8 +3,8 @@ import { UserService } from "../services/User.Service";
 import { Users } from "../models/User.entities";
 
 
-export class UserController{ //
-  createUserController = async (req: Request, res: Response): Promise<Response> => {
+export class UserController{ 
+  createUserController = async (req: Request, res: Response) => {
     const userService = new UserService();
     const { name, email, phone } = req.body;
     
@@ -14,7 +14,7 @@ export class UserController{ //
       phone
     });
     
-    return res.status(201).json(user);
+    return res.status(201).json({ message: 'Usuário criado' });
   }
 
   showUserController = async(req:Request, res:Response):Promise<Response>=>{
