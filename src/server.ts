@@ -1,27 +1,15 @@
-import "reflect-metadata";
-import express from "express";
-import { AppDataSource } from "./database/datasource";
-import cors from 'cors'
-import dotenv from 'dotenv'
-import { userRoutes } from "./routes/User.routes";
+import {createApp} from './app'
 
 
-AppDataSource.initialize().then(() => {
-  console.log("Database has been initialized ");
+createApp()
+   .then((app)=>{
 
-  const app = express();
-  app.use(express.json())
-  app.use(cors())
-  dotenv.config()
-
-  app.use('/users',userRoutes)
-
-
-  app.listen(process.env.PORT || 3000, () => {
+     app.listen(process.env.PORT || 3000, () => {
     console.log("Running on welcome");
   });
-}).catch((err)=>{
-  console.error(`Error during database initialization, ${err}`)
-  process.exit((1))
-});
+   }).catch((err)=>{
+    console.error('Error initializing the app:', err);
+    process.exit(1)
+   })
 
+ 
